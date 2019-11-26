@@ -1,22 +1,28 @@
 <template>
   <div
     ref="select"
-    :class="['drop-down', {'drop-down--disabled': isDisabled, 'drop-down--active': isOpenList}]"
-    :style="{width: width}"
+    :class="['relative cursor-pointer text-left drop-down',
+             {
+               'drop-down--disabled': isDisabled,
+               'drop-down--active': isOpenList
+             }]"
     :value="selectedValue"
   >
     <div
-      class="drop-down__input-wrapper"
+      class="relative"
     >
       <span
         v-if="$slots.default"
-        :class="['drop-down__label', {'drop-down__label--floated': selectedValue || isOpenList}]"
+        :class="['drop-down__label text-base pointer-events-none',
+                 {
+                   'drop-down__label--floated': selectedValue || isOpenList
+                 }]"
       >
         <slot />
       </span>
       <input
         :class="[
-          'drop-down__input',
+          'bg-white focus:outline-none focus:shadow-outline border rounded-lg py-4 px-4 block w-full appearance-none leading-none',
           {
             'drop-down__input--active': isOpenList
           }
@@ -33,16 +39,16 @@
       <ul
         v-show="isOpenList"
         ref="selectList"
-        class="drop-down__list scroll"
+        class="drop-down__list scroll absolute w-full m-0 p-0 rounded-sm border z-10"
       >
         <li
           v-for="(item, index) in items"
           :key="index"
-          class="drop-down__item"
+          class="drop-down__item m-0 text-base "
           @click.stop="setValue(item)"
         >
-          {{ !printKeys ? null : Object.keys(item)[0] }}
-          {{ !printKeys ? null : divider }}
+          {{ printKeys ? Object.keys(item)[0] : null }}
+          {{ printKeys ? divider : null }}
           {{ Object.values(item)[0] }}
         </li>
       </ul>
@@ -70,10 +76,6 @@ export default {
       type: Boolean,
       default: false
     },
-    width: {
-      type: String,
-      default: '300px'
-    },
     divider: {
       type: String,
       default: '-'
@@ -87,7 +89,7 @@ export default {
   },
   methods: {
     setValue (item) {
-      this.selectedValue = !this.printKeys ? Object.values(item)[0] : Object.keys(item)[0] + ` ${this.divider} ` + Object.values(item)[0]
+      this.selectedValue = this.printKeys ? Object.keys(item)[0] + ` ${this.divider} ` + Object.values(item)[0] : Object.values(item)[0] + ''
       this.$emit('input', item)
     },
     closeWithBlur () {
@@ -103,6 +105,10 @@ export default {
 </script>
 
 <style lang="sass">
+@import "tailwindcss/base"
+@import "tailwindcss/components"
+@import "tailwindcss/utilities"
+
 @import './variables.sass'
 @import './styles.sass'
 </style>

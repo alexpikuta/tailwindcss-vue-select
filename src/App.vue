@@ -4,8 +4,12 @@
       alt="Vue logo"
       src="./assets/logo.png"
     >
-    <section>
-      <p>
+    <section
+      class="m-6"
+    >
+      <p
+        class="m-2"
+      >
         Print only values (<code>print-keys</code> option set to false)
       </p>
       <TailwindcssVueSelect
@@ -13,7 +17,6 @@
         :items="arrayData"
         :print-keys="false"
         :divider="'-'"
-        :width="'300px'"
       >
         Label go here
       </TailwindcssVueSelect>
@@ -22,8 +25,12 @@
       </p>
     </section>
 
-    <section>
-      <p>
+    <section
+      class="m-6"
+    >
+      <p
+        class="m-2"
+      >
         Print pair key-value (<code>print-keys</code> option set to true)
       </p>
       <TailwindcssVueSelect
@@ -31,7 +38,6 @@
         :items="arrayData"
         :print-keys="true"
         :divider="'-'"
-        :width="'300px'"
       >
         Label go here
       </TailwindcssVueSelect>
@@ -55,7 +61,22 @@ export default {
       arrayData: [
         { 'first': '1s' },
         { 'second': '2s' },
-        { 'third': '3s' }
+        { 'third': false },
+        { 'first': '1s' },
+        { 'second': '2s' },
+        { 'third': false },
+        { 'first': '1s' },
+        { 'second': '2s' },
+        { 'third': false },
+        { 'first': '1s' },
+        { 'second': '2s' },
+        { 'third': false },
+        { 'first': '1s' },
+        { 'second': '2s' },
+        { 'third': false },
+        { 'first': '1s' },
+        { 'second': '2s' },
+        { 'third': false }
       ],
       value1: ' ',
       value2: ' '
@@ -65,13 +86,8 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+img {
+  margin: 30px auto
 }
 blockquote,
 p {
