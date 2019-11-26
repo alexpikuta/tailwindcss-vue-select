@@ -1,0 +1,89 @@
+.drop-down
+  box-sizing: border-box
+  position: relative
+  cursor: pointer
+  text-align: left
+  &__input-wrapper
+    position: relative
+  &__label
+    display: inline-block
+    position: absolute
+    top: 12px
+    left: 14px
+    font-size: 1em
+    color: $text-accent
+    transition: .4s
+    pointer-events: none
+    &--floated
+      top: 2px
+      font-size: .7em
+  &__input
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    cursor: pointer
+    padding: 13px 14px 14px
+    border-radius: 3px
+    border: 1px solid $background-accent
+    font-size: 1em
+    transition: .3s
+    box-sizing: border-box
+    outline: none
+    &:hover,
+    &:focus
+      border-color: $background-primary
+  &__list
+    position: absolute
+    width: 100%
+    box-sizing: border-box
+    max-height: 50vh
+    overflow-y: auto
+    margin: 0
+    padding: 0
+    background: $background-page-primary
+    border: 1px solid $background-accent
+    border-radius: 3px
+    z-index: 100
+    top: 100%
+    left: 0
+    &::-webkit-scrollbar-track
+      border-radius: 5px
+      background-color: transparent
+    &::-webkit-scrollbar-thumb
+      border-radius: 5px
+      background-color: transparent
+      transition: all .4s
+    &:hover::-webkit-scrollbar-thumb
+      background-color: $background-scroll
+      transition: all .4s
+    &::-webkit-scrollbar
+      width: 7px
+      height: 7px
+      transition: all .4s
+      background-color: transparent
+    &:hover::-webkit-scrollbar
+      transition: all .4s
+      background-color: transparent
+  &__item
+    display: block
+    padding: 10px 14px 11px
+    margin: 0
+    font-size: 1em
+    list-style-type: none
+    color: $text-accent
+    background: $background-page-primary
+    &:hover
+      cursor: pointer
+      background: $background-accent
+  &--disabled
+    color: transparentize($background-accent-saturated, .75)
+    pointer-events: none
+    .drop-down__value
+      color: transparentize($background-accent-saturated, .75)
+  &-toogle-enter-active,
+  &-toogle-leave-active
+    transition: opacity .5s
+  &-toogle-enter,
+  &-toogle-leave-to
+    opacity: 0
