@@ -36,7 +36,7 @@
       <TailwindcssVueSelect
         v-model="value1"
         :items="arrayData"
-        :print-keys="true"
+        :is-print-keys="true"
         :divider="'-'"
       >
         Label go here
@@ -59,24 +59,13 @@ export default {
   data () {
     return {
       arrayData: [
-        { 'first': '1s' },
-        { 'second': '2s' },
-        { 'third': false },
-        { 'first': '1s' },
-        { 'second': '2s' },
-        { 'third': false },
-        { 'first': '1s' },
-        { 'second': '2s' },
-        { 'third': false },
-        { 'first': '1s' },
-        { 'second': '2s' },
-        { 'third': false },
-        { 'first': '1s' },
-        { 'second': '2s' },
-        { 'third': false },
-        { 'first': '1s' },
-        { 'second': '2s' },
-        { 'third': false }
+        { 'first key': '1' },
+        { 'second key': 2 },
+        { 'third key': 'three' },
+        { 'fourth key': true },
+        { 'fiveth key': false },
+        { 'sixth key': 0 },
+        { 'seventh key': new Date() }
       ],
       value1: ' ',
       value2: ' '

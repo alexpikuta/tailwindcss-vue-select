@@ -1,12 +1,21 @@
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mount } from '@vue/test-utils'
+import TailwindcssVueSelect from '@/components/TailwindcssVueSelect.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
+describe('Tailwind Select', () => {
+  const wrapper = mount(TailwindcssVueSelect)
+
+  it('компонент рендерится', () => {
+    expect(wrapper.exists()).toBe(true)
+  })
+
+  it('список аргументов не рендерится без переданых props', () => {
+    expect(wrapper.contains('ul')).toBe(false)
+  })
+
+  // const propsWrapper = mount(TailwindcssVueSelect)
+  it('компонент рендерится с предустановленным v-model', () => {
+    const input = wrapper.find('input')
+    input.setValue('Some value')
+    expect(wrapper.exists()).toBe(true)
   })
 })

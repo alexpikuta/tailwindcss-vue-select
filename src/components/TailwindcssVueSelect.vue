@@ -27,6 +27,7 @@
             'drop-down__input--active': isOpenList
           }
         ]"
+        type="text"
         :value="selectedValue"
         readonly
         @blur="closeWithBlur"
@@ -37,7 +38,7 @@
     </div>
     <transition name="drop-down-toogle">
       <ul
-        v-show="isOpenList"
+        v-if="isOpenList"
         ref="selectList"
         class="drop-down__list scroll absolute w-full m-0 p-0 rounded-sm border z-10"
       >
@@ -47,8 +48,8 @@
           class="drop-down__item m-0 text-base "
           @click.stop="setValue(item)"
         >
-          {{ printKeys ? Object.keys(item)[0] : null }}
-          {{ printKeys ? divider : null }}
+          {{ isPrintKeys ? Object.keys(item)[0] : null }}
+          {{ isPrintKeys ? divider : null }}
           {{ Object.values(item)[0] }}
         </li>
       </ul>
@@ -64,11 +65,7 @@ export default {
       type: Array,
       default: null
     },
-    arrayList: {
-      type: Boolean,
-      default: false
-    },
-    printKeys: {
+    isPrintKeys: {
       type: Boolean,
       default: false
     },
@@ -89,7 +86,7 @@ export default {
   },
   methods: {
     setValue (item) {
-      this.selectedValue = this.printKeys ? Object.keys(item)[0] + ` ${this.divider} ` + Object.values(item)[0] : Object.values(item)[0] + ''
+      this.selectedValue = this.isPrintKeys ? Object.keys(item)[0] + ` ${this.divider} ` + Object.values(item)[0] : Object.values(item)[0] + ''
       this.$emit('input', item)
     },
     closeWithBlur () {
