@@ -1,0 +1,59 @@
+.drop-down
+  box-sizing: border-box
+  &__label
+    display: inline-block
+    position: absolute
+    top: 12px
+    left: 14px
+    color: $text-accent
+    transition: .4s
+    &--floated
+      top: 3px
+      font-size: .65em
+  &__input
+    &:hover,
+    &:focus
+      border-color: $background-primary
+  &__list
+    box-sizing: border-box
+    max-height: 50vh
+    overflow-y: auto
+    background: $background-page-primary
+    border-color: $background-accent
+    &::-webkit-scrollbar-track
+      border-radius: 5px
+      background-color: transparent
+    &::-webkit-scrollbar-thumb
+      border-radius: 5px
+      background-color: transparent
+      transition: all .4s
+    &:hover::-webkit-scrollbar-thumb
+      background-color: $background-scroll
+      transition: all .4s
+    &::-webkit-scrollbar
+      width: 7px
+      height: 7px
+      transition: all .4s
+      background-color: transparent
+    &:hover::-webkit-scrollbar
+      transition: all .4s
+      background-color: transparent
+  &__item
+    display: block
+    padding: 10px 14px 11px
+    list-style-type: none
+    color: $text-accent
+    background: $background-page-primary
+    &:hover
+      background: $background-accent
+  &--disabled
+    color: transparentize($background-accent-saturated, .75)
+    pointer-events: none
+    .drop-down__value
+      color: transparentize($background-accent-saturated, .75)
+  &-toogle-enter-active,
+  &-toogle-leave-active
+    transition: opacity .5s
+  &-toogle-enter,
+  &-toogle-leave-to
+    opacity: 0
