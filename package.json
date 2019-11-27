@@ -1,13 +1,23 @@
 {
   "name": "tailwindcss-vue-select",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "author": "alexpikuta",
+  "description": "Simple Vue.js <select> component, styled with TailWind framework.",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name tailwindcss-vue-select ./src/components/TailwindcssVueSelect.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
+  "main": "./dist/tailwindcss-vue-select.common.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexpikuta/tailwindcss-vue-select"
+  },
+  "files": [
+    "dist/*"
+  ],
   "dependencies": {
     "core-js": "^3.3.2",
     "tailwindcss": "^1.1.4",
